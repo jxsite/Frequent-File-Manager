@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>常用文件管理器 - Frequent File Manager</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-icon">⚡</span>
+                <span class="logo-text" id="logo-text">常用文件管理器</span>
+            </div>
+            <div class="nav-actions">
+                <button id="lang-btn" class="btn btn-secondary btn-lang">English</button>
+                <a href="https://github.com" target="_blank" class="nav-link github-link">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                        <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"></path>
+                    </svg>
+                    <span>GitHub</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-bg-blur"></div>
+        <div class="container hero-container">
+            <div class="hero-content">
+                <span class="badge" id="hero-badge">⚡ Windows Desktop Utility</span>
+                <h1 id="hero-title" class="gradient-text">极简边缘侧边栏，<br>高频项目触手可及</h1>
+                <p id="hero-desc">
+                    轻量、智能且极其灵敏的桌面抽屉。当鼠标触碰屏幕边缘时即时滑出，常用目录、工作图纸与最近查看一触即达。
+                </p>
+                <div class="hero-actions">
+                    <a href="#download" class="btn btn-primary" id="btn-hero-download">下载最新版本</a>
+                    <a href="https://github.com" target="_blank" class="btn btn-secondary" id="btn-hero-code">获取源码</a>
+                </div>
+            </div>
+            <div class="hero-preview">
+                <div class="preview-card">
+                    <div class="card-glow"></div>
+                    <img src="assets/edgedock_preview.png" alt="EdgeDock Screenshot Mockup" class="preview-img">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Bento Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 id="features-title">轻量级，重量级体验</h2>
+                <p id="features-desc">专为追求高效率的打工人、设计师与工程师打造，零延迟无缝连接您的常用工作流。</p>
+            </div>
+            <div class="bento-grid">
+                <!-- Card 1 -->
+                <div class="bento-card card-large">
+                    <div class="bento-icon">🚀</div>
+                    <h3 id="feat1-title">屏幕边缘智能激活</h3>
+                    <p id="feat1-desc">当鼠标触碰设定的屏幕边界（左侧/右侧）时，侧边栏会自动滑出。支持多显示器识别，光标在哪屏就在哪屏滑出，移开后自动折叠隐藏。</p>
+                </div>
+                <!-- Card 2 -->
+                <div class="bento-card">
+                    <div class="bento-icon">💾</div>
+                    <h3 id="feat2-title">状态记忆与自适应</h3>
+                    <p id="feat2-desc">自动记住您最后一次打开的标签栏。下次开机启动，侧边栏依然保持原有状态，为您减少每一次无意义的鼠标点击。</p>
+                </div>
+                <!-- Card 3 -->
+                <div class="bento-card">
+                    <div class="bento-icon">📂</div>
+                    <h3 id="feat3-title">目录与文件独立排序</h3>
+                    <p id="feat3-desc">首创双通道数据流独立记录，不打架、不干扰。常用目录和高频文件各排各的，修改时间与点击次数双重机制排序。</p>
+                </div>
+                <!-- Card 4 -->
+                <div class="bento-card card-medium">
+                    <div class="bento-icon">📌</div>
+                    <h3 id="feat4-title">一键钉住与自定义添加</h3>
+                    <p id="feat4-desc">可随时手动钉住常用项。支持直接拖入或手动选择添加任意子文件夹与图纸，完美适配频繁查看同一项目图纸的设计流。</p>
+                </div>
+                <!-- Card 5 -->
+                <div class="bento-card">
+                    <div class="bento-icon">🌓</div>
+                    <h3 id="feat5-title">三色主题 & 随系统切换</h3>
+                    <p id="feat5-desc">提供深色、浅色及跟随系统主题三种外观，在高级质感和日光阅读间自如切换。设置参数全界面即时预览。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Live Demo Section -->
+    <section class="live-demo" id="demo">
+        <div class="container demo-container">
+            <div class="demo-info">
+                <h2 id="demo-title">在线交互式预览</h2>
+                <p id="demo-desc">无需下载，直接在浏览器中模拟测试 EdgeDock 的滑出和标签切换效果！</p>
+                <div class="demo-guide">
+                    <div class="guide-step">
+                        <span class="step-num">1</span>
+                        <p id="demo-step1">将鼠标移向右侧的黑色条形边缘，侧边栏会自动滑出。</p>
+                    </div>
+                    <div class="guide-step">
+                        <span class="step-num">2</span>
+                        <p id="demo-step2">点击顶部标签切换查看不同的常用目录和文件。</p>
+                    </div>
+                    <div class="guide-step">
+                        <span class="step-num">3</span>
+                        <p id="demo-step3">点击界面齿轮，即可打开设置面板预览不同主题和语言效果。</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="demo-window-wrapper">
+                <!-- Mock OS Workspace -->
+                <div class="mock-workspace" id="mock-workspace">
+                    <div class="mock-desktop-content">
+                        <h4 id="mock-bg-text">EdgeDock 虚拟桌面</h4>
+                        <p id="mock-bg-sub">请将鼠标滑向最右侧边缘</p>
+                    </div>
+                    
+                    <!-- Mouse Trigger Edge -->
+                    <div class="mock-trigger-edge" id="mock-trigger-edge"></div>
+                    
+                    <!-- Interactive Mock Sidebar Window -->
+                    <div class="mock-sidebar collapsed" id="mock-sidebar">
+                        <div class="sidebar-border">
+                            <div class="sidebar-layout">
+                                <!-- Header -->
+                                <div class="sidebar-header">
+                                    <div class="header-title-container">
+                                        <span class="header-icon">📂</span>
+                                        <span class="header-text" id="mock-header-title">常用目录</span>
+                                    </div>
+                                    <div class="header-actions">
+                                        <button class="header-btn" id="mock-refresh-btn" title="刷新">🔄</button>
+                                        <button class="header-btn" id="mock-settings-btn" title="设置">⚙️</button>
+                                    </div>
+                                </div>
+                                
+                                <!-- Search -->
+                                <div class="sidebar-search">
+                                    <input type="text" id="mock-search-box" placeholder="搜索..." />
+                                </div>
+                                
+                                <!-- Tabs -->
+                                <div class="sidebar-tabs">
+                                    <button class="tab-btn active" data-tab="folders" id="tab-folders-btn">常用目录</button>
+                                    <button class="tab-btn" data-tab="files" id="tab-files-btn">常用文件</button>
+                                    <button class="tab-btn" data-tab="recent" id="tab-recent-btn">最近查看</button>
+                                    <button class="tab-btn" data-tab="custom" id="tab-custom-btn">自定义</button>
+                                </div>
+                                
+                                <!-- Sorting -->
+                                <div class="sidebar-sort">
+                                    <button class="sort-btn" id="sort-name-btn">名称 ↕</button>
+                                    <button class="sort-btn active" id="sort-time-btn">时间 ↕</button>
+                                    <button class="sort-btn" id="sort-freq-btn">频率 ↕</button>
+                                </div>
+                                
+                                <!-- Content Lists -->
+                                <div class="sidebar-content-area">
+                                    <div class="scroll-container" id="mock-list-container">
+                                        <!-- Items will be populated dynamically by JS -->
+                                    </div>
+                                </div>
+                                
+                                <!-- Footer -->
+                                <div class="sidebar-footer">
+                                    <span id="mock-status-text">已加载 3 个目录</span>
+                                    <span id="mock-footer-tip">双击托盘可显隐</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Mock Settings Window Dialog inside sidebar workspace -->
+                        <div class="mock-settings-dialog" id="mock-settings-dialog">
+                            <div class="settings-header">
+                                <span id="settings-title-txt">侧边栏工具设置</span>
+                                <button class="settings-close" id="settings-close-btn">&times;</button>
+                            </div>
+                            <div class="settings-body">
+                                <div class="settings-row">
+                                    <label class="checkbox-container">
+                                        <input type="checkbox" checked disabled />
+                                        <span class="checkmark"></span>
+                                        <span id="settings-autostart-txt">开机自动启动</span>
+                                    </label>
+                                </div>
+                                <div class="settings-row flex-row">
+                                    <span id="settings-pos-txt">停靠位置:</span>
+                                    <select class="settings-select" id="settings-pos-select">
+                                        <option value="Right" id="opt-pos-right">右侧</option>
+                                        <option value="Left" id="opt-pos-left">左侧</option>
+                                    </select>
+                                </div>
+                                <div class="settings-row">
+                                    <span id="settings-theme-txt">界面主题:</span>
+                                    <select class="settings-select" id="settings-theme-select">
+                                        <option value="Dark" id="opt-theme-dark">深色</option>
+                                        <option value="Light" id="opt-theme-light">浅色</option>
+                                    </select>
+                                </div>
+                                <div class="settings-row">
+                                    <span id="settings-lang-txt">界面语言:</span>
+                                    <select class="settings-select" id="settings-lang-select">
+                                        <option value="zh">简体中文</option>
+                                        <option value="en">English</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="settings-footer">
+                                <button class="btn-sm btn-primary" id="settings-save-btn">保存</button>
+                                <button class="btn-sm btn-secondary" id="settings-cancel-btn">取消</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section class="download-section" id="download">
+        <div class="container text-center">
+            <h2 id="dl-title">立刻开启高效桌面体验</h2>
+            <p id="dl-desc">单文件免安装，无广告无捆绑，下载双击即用。</p>
+            <div class="download-box">
+                <a href="https://github.com" target="_blank" class="btn btn-primary btn-lg">
+                    <span class="dl-icon">📥</span>
+                    <div class="dl-text">
+                        <span class="dl-action" id="dl-btn-txt">下载 Windows 客户端</span>
+                        <span class="dl-version">v1.0.0 · win-x64 (.exe)</span>
+                    </div>
+                </a>
+                <p class="dl-note" id="dl-note">支持 Windows 10 / Windows 11 (64位)</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-container">
+            <p>&copy; 2026 EdgeDock Project. Released under the MIT License.</p>
+            <div class="footer-links">
+                <a href="https://github.com" target="_blank">GitHub</a>
+                <a href="#features">Features</a>
+                <a href="#demo">Demo</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
