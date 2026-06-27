@@ -1,0 +1,360 @@
+<Window x:Class="SidebarApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="{DynamicResource StrHeaderTitle}" 
+        Height="800" Width="280"
+        WindowStyle="None" 
+        AllowsTransparency="True" 
+        Background="Transparent"
+        Topmost="True" 
+        ShowInTaskbar="False"
+        MouseEnter="Window_MouseEnter" 
+        MouseLeave="Window_MouseLeave">
+    
+    <Window.Resources>
+        <!-- Card Style -->
+        <Style x:Key="FolderCardStyle" TargetType="Border">
+            <Setter Property="Background" Value="{DynamicResource BgCardBrush}"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="8"/>
+            <Setter Property="Padding" Value="6,4"/>
+            <Setter Property="Margin" Value="0,0,0,4"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter Property="Background" Value="{DynamicResource BgCardHoverBrush}"/>
+                    <Setter Property="BorderBrush" Value="{DynamicResource AccentBrush}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+    <Border x:Name="MainBorder" 
+            Background="{DynamicResource BgDarkBrush}" 
+            BorderBrush="{DynamicResource BorderBrush}" 
+            BorderThickness="1" 
+            CornerRadius="12,0,0,12"
+            Margin="0">
+        <Grid Margin="12,15,12,12">
+            <Grid.RowDefinitions>
+                <!-- Title & Actions -->
+                <RowDefinition Height="Auto"/>
+                <!-- Search Bar -->
+                <RowDefinition Height="Auto"/>
+                <!-- Tab Buttons -->
+                <RowDefinition Height="Auto"/>
+                <!-- Sort Tabs -->
+                <RowDefinition Height="Auto"/>
+                <!-- List Area -->
+                <RowDefinition Height="*"/>
+                <!-- Bottom Status -->
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <!-- Header -->
+            <Grid Grid.Row="0" Margin="0,0,0,10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                    <Path Data="M10,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V8C22,6.89 21.1,6 20,4H12L10,4Z" 
+                          Fill="{DynamicResource AccentBrush}" Width="16" Height="16" Stretch="Uniform" VerticalAlignment="Center" Margin="0,0,6,0"/>
+                    <TextBlock Text="{DynamicResource StrHeaderTitle}" Foreground="{DynamicResource TextPrimaryBrush}" FontSize="14" FontWeight="Bold" VerticalAlignment="Center"/>
+                </StackPanel>
+
+                <!-- Pin Toggle Button -->
+                <Button x:Name="PinModeBtn" Grid.Column="1" Click="PinMode_Click" Style="{StaticResource ModernButtonStyle}" ToolTip="固定/自动弹缩" Margin="0,0,5,0">
+                    <Path x:Name="PinModeIcon" Data="M16,12V4H17V2H7V4H8V12L6,14V16H11.2V22H12.8V16H18V14L16,12Z" 
+                          Fill="{DynamicResource TextSecondaryBrush}" Width="14" Height="14" Stretch="Uniform"/>
+                </Button>
+
+                <!-- Actions -->
+                <Button Grid.Column="2" Click="Refresh_Click" Style="{StaticResource ModernButtonStyle}" ToolTip="{DynamicResource StrRefreshToolTip}" Margin="0,0,5,0">
+                    <Path Data="M17.65,6.35C16.2,4.9 14.21,4 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20C15.73,20 18.84,17.45 19.73,14H17.65C16.83,16.33 14.61,18 12,18A6,6 0 0,1 6,12A6,6 0 0,1 12,6C13.66,6 15.14,6.69 16.22,7.78L13,11H20V4L17.65,6.35Z" 
+                          Fill="{DynamicResource TextSecondaryBrush}" Width="14" Height="14" Stretch="Uniform"/>
+                </Button>
+                
+                <Button Grid.Column="3" Click="Settings_Click" Style="{StaticResource ModernButtonStyle}" ToolTip="{DynamicResource StrSettingsToolTip}">
+                    <Path Data="M12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M19.43,12.97C19.47,12.65 19.5,12.33 19.5,12C19.5,11.67 19.47,11.34 19.43,11L21.54,9.37C21.73,9.22 21.78,8.95 21.66,8.73L19.66,5.27C19.54,5.05 19.27,4.97 19.05,5.05L16.56,6.05C16.04,5.66 15.47,5.34 14.86,5.08L14.47,2.42C14.43,2.18 14.22,2 13.97,2H9.97C9.72,2 9.51,2.18 9.47,2.42L9.08,5.08C8.47,5.34 7.9,5.66 7.38,6.05L4.89,5.05C4.67,4.97 4.4,5.05 4.28,5.27L2.28,8.73C2.16,8.95 2.21,9.22 2.4,9.37L4.51,11C4.47,11.34 4.5,11.67 4.5,12C4.5,12.33 4.47,12.65 4.51,12.97L2.4,14.63C2.21,14.78 2.16,15.05 2.28,15.27L4.28,18.73C4.4,18.95 4.67,19.03 4.89,18.95L7.38,17.95C7.9,18.34 8.47,18.66 9.08,18.92L9.47,21.58C9.51,21.82 9.72,22 9.97,22H13.97C14.22,22 14.43,21.82 14.47,21.58L14.86,18.92C15.47,18.66 16.04,18.34 16.56,17.95L19.05,18.95C19.27,19.03 19.54,18.95 19.66,18.73L21.66,15.27C21.78,15.05 21.73,14.78 21.54,14.63L19.43,12.97Z" 
+                          Fill="{DynamicResource TextSecondaryBrush}" Width="14" Height="14" Stretch="Uniform"/>
+                </Button>
+            </Grid>
+
+            <!-- Search Bar -->
+            <Grid Grid.Row="1" Margin="0,0,0,10">
+                <TextBox x:Name="SearchBox" Style="{StaticResource ModernTextBoxStyle}" TextChanged="SearchBox_TextChanged" GotFocus="SearchBox_GotFocus" LostFocus="SearchBox_LostFocus" Tag="{DynamicResource StrSearchPlaceholder}"/>
+                <TextBlock IsHitTestVisible="False" Text="{DynamicResource StrSearchPlaceholder}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="{DynamicResource TextMutedBrush}" FontSize="11">
+                    <TextBlock.Style>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Text, ElementName=SearchBox}" Value="">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+            </Grid>
+
+            <!-- Tab Buttons -->
+            <UniformGrid Grid.Row="2" Columns="4" Margin="0,0,0,8">
+                <ToggleButton x:Name="BtnTabFolders" Content="{DynamicResource StrTabFolders}" Click="BtnTab_Click" Style="{StaticResource TabButtonStyle}" IsChecked="True"/>
+                <ToggleButton x:Name="BtnTabFiles" Content="{DynamicResource StrTabFiles}" Click="BtnTab_Click" Style="{StaticResource TabButtonStyle}"/>
+                <ToggleButton x:Name="BtnTabRecent" Content="{DynamicResource StrTabRecent}" Click="BtnTab_Click" Style="{StaticResource TabButtonStyle}"/>
+                <ToggleButton x:Name="BtnTabCustom" Content="{DynamicResource StrTabCustom}" Click="BtnTab_Click" Style="{StaticResource TabButtonStyle}"/>
+            </UniformGrid>
+
+            <!-- Sorting Bar -->
+            <UniformGrid Grid.Row="3" Columns="3" Margin="0,0,0,10">
+                <ToggleButton x:Name="BtnSortName" Content="{DynamicResource StrSortName}" Click="BtnSort_Click" Style="{StaticResource TabButtonStyle}"/>
+                <ToggleButton x:Name="BtnSortTime" Content="{DynamicResource StrSortTime}" Click="BtnSort_Click" Style="{StaticResource TabButtonStyle}" IsChecked="True"/>
+                <ToggleButton x:Name="BtnSortFreq" Content="{DynamicResource StrSortFreq}" Click="BtnSort_Click" Style="{StaticResource TabButtonStyle}"/>
+            </UniformGrid>
+
+            <!-- List Area -->
+            <Grid Grid.Row="4">
+                <!-- 1. Folders ScrollViewer -->
+                <ScrollViewer x:Name="FoldersScrollViewer" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Visibility="Visible">
+                    <ItemsControl x:Name="FoldersItemsControl">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border Style="{StaticResource FolderCardStyle}" MouseLeftButtonDown="FolderCard_Click">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto" SharedSizeGroup="FolderAction" x:Name="ActionCol"/>
+                                        </Grid.ColumnDefinitions>
+                                        
+                                        <!-- Folder Icon -->
+                                        <Path Data="M10,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V8C22,6.89 21.1,6 20,4H12L10,4Z" 
+                                              Fill="{DynamicResource AccentBrush}" Width="14" Height="14" Stretch="Uniform" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                                        
+                                        <!-- Folder Info -->
+                                        <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                            <TextBlock Text="{Binding Name}" Foreground="{DynamicResource TextPrimaryBrush}" FontSize="11" FontWeight="SemiBold" TextTrimming="CharacterEllipsis"/>
+                                            <TextBlock Text="{Binding ShortPath}" Foreground="{DynamicResource TextSecondaryBrush}" FontSize="9" Margin="0,1,0,1" TextTrimming="CharacterEllipsis"/>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="{Binding LastModifiedString}" Foreground="{DynamicResource TextMutedBrush}" FontSize="8"/>
+                                                <TextBlock Text=" • " Foreground="{DynamicResource TextMutedBrush}" FontSize="8"/>
+                                                <TextBlock Text="{Binding Frequency, StringFormat='🔥 {0}'}" Foreground="{DynamicResource YellowBrush}" FontSize="8"/>
+                                            </StackPanel>
+                                        </StackPanel>
+
+                                        <!-- Pin Action -->
+                                        <Button Grid.Column="2" Style="{StaticResource ModernButtonStyle}" Padding="3" VerticalAlignment="Center" Click="PinButton_Click" Tag="{Binding FullPath}">
+                                            <Path x:Name="PinPath" Data="M16,12V4H17V2H7V4H8V12L6,14V16H11.2V22H12.8V16H18V14L16,12Z" 
+                                                  Width="10" Height="10" Stretch="Uniform">
+                                                <Path.Style>
+                                                    <Style TargetType="Path">
+                                                        <Setter Property="Fill" Value="{DynamicResource TextMutedBrush}"/>
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding IsPinned}" Value="True">
+                                                                <Setter Property="Fill" Value="{DynamicResource AccentBrush}"/>
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </Path.Style>
+                                            </Path>
+                                        </Button>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+
+                <!-- 2. Files ScrollViewer -->
+                <ScrollViewer x:Name="FilesScrollViewer" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Visibility="Collapsed">
+                    <ItemsControl x:Name="FilesItemsControl">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border Style="{StaticResource FolderCardStyle}" MouseLeftButtonDown="FileCard_Click">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        
+                                        <!-- File Icon -->
+                                        <Path Data="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M13,9V3.5L18.5,9H13Z" 
+                                              Fill="{DynamicResource GreenBrush}" Width="12" Height="12" Stretch="Uniform" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                                        
+                                        <!-- File Info -->
+                                        <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                            <TextBlock Text="{Binding Name}" Foreground="{DynamicResource TextPrimaryBrush}" FontSize="11" FontWeight="SemiBold" TextTrimming="CharacterEllipsis"/>
+                                            <TextBlock Text="{Binding ShortPath}" Foreground="{DynamicResource TextSecondaryBrush}" FontSize="9" Margin="0,1,0,1" TextTrimming="CharacterEllipsis"/>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="{Binding LastModifiedString}" Foreground="{DynamicResource TextMutedBrush}" FontSize="8"/>
+                                                <TextBlock Text=" • " Foreground="{DynamicResource TextMutedBrush}" FontSize="8"/>
+                                                <TextBlock Text="{Binding Frequency, StringFormat='🔥 {0}'}" Foreground="{DynamicResource YellowBrush}" FontSize="8"/>
+                                            </StackPanel>
+                                        </StackPanel>
+
+                                        <!-- Pin Action -->
+                                        <Button Grid.Column="2" Style="{StaticResource ModernButtonStyle}" Padding="3" VerticalAlignment="Center" Click="PinButton_Click" Tag="{Binding FullPath}">
+                                            <Path x:Name="PinPath" Data="M16,12V4H17V2H7V4H8V12L6,14V16H11.2V22H12.8V16H18V14L16,12Z" 
+                                                  Width="10" Height="10" Stretch="Uniform">
+                                                <Path.Style>
+                                                    <Style TargetType="Path">
+                                                        <Setter Property="Fill" Value="{DynamicResource TextMutedBrush}"/>
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding IsPinned}" Value="True">
+                                                                <Setter Property="Fill" Value="{DynamicResource AccentBrush}"/>
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </Path.Style>
+                                            </Path>
+                                        </Button>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+
+                <!-- 3. Recent Items ScrollViewer -->
+                <ScrollViewer x:Name="RecentScrollViewer" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Visibility="Collapsed">
+                    <ItemsControl x:Name="RecentItemsControl">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border Style="{StaticResource FolderCardStyle}" MouseLeftButtonDown="RecentCard_Click">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        
+                                        <!-- Recent Icon (Folder or File) -->
+                                        <Path x:Name="RecentIcon" Width="12" Height="12" Stretch="Uniform" VerticalAlignment="Center" Margin="0,0,8,0">
+                                            <Path.Style>
+                                                <Style TargetType="Path">
+                                                    <Setter Property="Fill" Value="{DynamicResource GreenBrush}"/>
+                                                    <Setter Property="Data" Value="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M13,9V3.5L18.5,9H13Z"/>
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding IsDirectory}" Value="True">
+                                                            <Setter Property="Fill" Value="{DynamicResource AccentBrush}"/>
+                                                            <Setter Property="Data" Value="M10,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V8C22,6.89 21.1,6 20,4H12L10,4Z"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Path.Style>
+                                        </Path>
+                                        
+                                        <!-- Recent Info -->
+                                        <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                            <TextBlock Text="{Binding Name}" Foreground="{DynamicResource TextPrimaryBrush}" FontSize="11" FontWeight="SemiBold" TextTrimming="CharacterEllipsis"/>
+                                            <TextBlock Text="{Binding ShortPath}" Foreground="{DynamicResource TextSecondaryBrush}" FontSize="9" Margin="0,1,0,1" TextTrimming="CharacterEllipsis"/>
+                                            <TextBlock Text="{Binding LastAccessedString, StringFormat='🕒 {0}'}" Foreground="{DynamicResource TextMutedBrush}" FontSize="8"/>
+                                        </StackPanel>
+
+                                        <!-- Pin Action -->
+                                        <Button Grid.Column="2" Style="{StaticResource ModernButtonStyle}" Padding="3" VerticalAlignment="Center" Click="PinButton_Click" Tag="{Binding FullPath}">
+                                            <Path x:Name="PinPath" Data="M16,12V4H17V2H7V4H8V12L6,14V16H11.2V22H12.8V16H18V14L16,12Z" 
+                                                  Width="10" Height="10" Stretch="Uniform">
+                                                <Path.Style>
+                                                    <Style TargetType="Path">
+                                                        <Setter Property="Fill" Value="{DynamicResource TextMutedBrush}"/>
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding IsPinned}" Value="True">
+                                                                <Setter Property="Fill" Value="{DynamicResource AccentBrush}"/>
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </Path.Style>
+                                            </Path>
+                                        </Button>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+
+                <!-- 4. Custom Items Layout -->
+                <Grid x:Name="CustomArea" Visibility="Collapsed">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    
+                    <!-- Quick Add Actions -->
+                    <Grid Grid.Row="0" Margin="0,0,0,6">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button Content="{DynamicResource StrBtnAddFolder}" Click="AddCustomFolder_Click" Style="{StaticResource ModernButtonStyle}" Height="24" FontSize="10" Margin="0,0,3,0"/>
+                        <Button Content="{DynamicResource StrBtnAddFile}" Click="AddCustomFile_Click" Style="{StaticResource ModernButtonStyle}" Height="24" FontSize="10" Margin="3,0,0,0" Grid.Column="1"/>
+                    </Grid>
+
+                    <ScrollViewer Grid.Row="1" x:Name="CustomScrollViewer" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                        <ItemsControl x:Name="CustomItemsControl">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Style="{StaticResource FolderCardStyle}" MouseLeftButtonDown="CustomCard_Click">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            
+                                            <!-- Icon (Folder or File) -->
+                                            <Path Width="12" Height="12" Stretch="Uniform" VerticalAlignment="Center" Margin="0,0,8,0">
+                                                <Path.Style>
+                                                    <Style TargetType="Path">
+                                                        <Setter Property="Fill" Value="{DynamicResource GreenBrush}"/>
+                                                        <Setter Property="Data" Value="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M13,9V3.5L18.5,9H13Z"/>
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding IsDirectory}" Value="True">
+                                                                <Setter Property="Fill" Value="{DynamicResource AccentBrush}"/>
+                                                                <Setter Property="Data" Value="M10,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V8C22,6.89 21.1,6 20,4H12L10,4Z"/>
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </Path.Style>
+                                            </Path>
+                                            
+                                            <!-- Info -->
+                                            <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                                <TextBlock Text="{Binding Name}" Foreground="{DynamicResource TextPrimaryBrush}" FontSize="11" FontWeight="SemiBold" TextTrimming="CharacterEllipsis"/>
+                                                <TextBlock Text="{Binding ShortPath}" Foreground="{DynamicResource TextSecondaryBrush}" FontSize="9" Margin="0,1,0,1" TextTrimming="CharacterEllipsis"/>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock Text="{Binding LastModifiedString}" Foreground="{DynamicResource TextMutedBrush}" FontSize="8"/>
+                                                    <TextBlock Text=" • " Foreground="{DynamicResource TextMutedBrush}" FontSize="8"/>
+                                                    <TextBlock Text="{Binding Frequency, StringFormat='🔥 {0}'}" Foreground="{DynamicResource YellowBrush}" FontSize="8"/>
+                                                </StackPanel>
+                                            </StackPanel>
+
+                                            <!-- Unpin Action -->
+                                            <Button Grid.Column="2" Style="{StaticResource ModernButtonStyle}" Padding="3" VerticalAlignment="Center" Click="PinButton_Click" Tag="{Binding FullPath}">
+                                                <Path Data="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" 
+                                                      Fill="{DynamicResource RedBrush}" Width="10" Height="10" Stretch="Uniform"/>
+                                            </Button>
+                                        </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </ScrollViewer>
+                </Grid>
+            </Grid>
+
+            <!-- Footer Status -->
+            <Grid Grid.Row="5" Margin="0,8,0,0">
+                <TextBlock x:Name="TxtStatus" Text="已加载 0 个目录" Foreground="{DynamicResource TextMutedBrush}" FontSize="10" HorizontalAlignment="Left"/>
+                <TextBlock Text="{DynamicResource StrFooterTip}" Foreground="{DynamicResource TextMutedBrush}" FontSize="10" HorizontalAlignment="Right"/>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>

@@ -1,0 +1,64 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+    <!-- UI Strings - English -->
+    <system:String x:Key="StrHeaderTitle">LS File Manager</system:String>
+    <system:String x:Key="StrTabFolders">Folders</system:String>
+    <system:String x:Key="StrTabFiles">Files</system:String>
+    <system:String x:Key="StrTabRecent">Recent</system:String>
+    <system:String x:Key="StrTabCustom">Custom</system:String>
+    
+    <system:String x:Key="StrSearchPlaceholder">Search all files...</system:String>
+    <system:String x:Key="StrSortName">Name ↕</system:String>
+    <system:String x:Key="StrSortTime">Time ↕</system:String>
+    <system:String x:Key="StrSortFreq">Freq ↕</system:String>
+    
+    <system:String x:Key="StrStatusFolders">Loaded {0} folders</system:String>
+    <system:String x:Key="StrStatusFiles">Loaded {0} files</system:String>
+    <system:String x:Key="StrStatusRecent">Loaded {0} recent items</system:String>
+    <system:String x:Key="StrStatusCustom">Loaded {0} custom items</system:String>
+    <system:String x:Key="StrFooterTip">Dbl-click tray to toggle</system:String>
+
+    <!-- Custom tab buttons -->
+    <system:String x:Key="StrBtnAddFolder">➕ Add Folder</system:String>
+    <system:String x:Key="StrBtnAddFile">➕ Add File</system:String>
+
+    <!-- Settings Window -->
+    <system:String x:Key="StrSettingsTitle">Sidebar Settings</system:String>
+    <system:String x:Key="StrSettingsAutoStart">Start on Boot</system:String>
+    <system:String x:Key="StrSettingsPosition">Position: </system:String>
+    <system:String x:Key="StrSettingsPosLeft">Left</system:String>
+    <system:String x:Key="StrSettingsPosRight">Right</system:String>
+    <system:String x:Key="StrSettingsWidth">Width (200-400px):</system:String>
+    <system:String x:Key="StrSettingsOpacity">Opacity (30%-100%):</system:String>
+    <system:String x:Key="StrSettingsTheme">Theme: </system:String>
+    <system:String x:Key="StrSettingsLang">Language: </system:String>
+    <system:String x:Key="StrSettingsBtnSave">Save</system:String>
+    <system:String x:Key="StrSettingsBtnCancel">Cancel</system:String>
+    
+    <system:String x:Key="StrThemeDark">Dark</system:String>
+    <system:String x:Key="StrThemeLight">Light</system:String>
+    <system:String x:Key="StrThemeSystem">System</system:String>
+
+    <!-- Message Boxes / Dialogs -->
+    <system:String x:Key="MsgFolderNotExists">This folder no longer exists or has been moved!</system:String>
+    <system:String x:Key="MsgFileNotExists">This file no longer exists or has been moved!</system:String>
+    <system:String x:Key="MsgOpenError">Failed to open item: {0}</system:String>
+    <system:String x:Key="MsgBoxError">Error</system:String>
+    
+    <!-- Added strings -->
+    <system:String x:Key="StrRefreshToolTip">Refresh List</system:String>
+    <system:String x:Key="StrSettingsToolTip">Open Settings</system:String>
+    <system:String x:Key="StrSelectFolderTitle">Select Folder to Add to Custom</system:String>
+    <system:String x:Key="StrSelectFileTitle">Select File to Add to Custom</system:String>
+    <system:String x:Key="StrStatusScanning">Scanning...</system:String>
+    <system:String x:Key="StrStatusFailed">Scan failed</system:String>
+    <system:String x:Key="StrAllFilesFilter">All Files</system:String>
+    <system:String x:Key="StrAuthorWeChat">WeChat: mmn3398</system:String>
+    <system:String x:Key="StrAuthorWebsite">LS Plugin Site: </system:String>
+    <system:String x:Key="StrPinModeAuto">Auto Slide</system:String>
+    <system:String x:Key="StrPinModeFixed">Always Visible</system:String>
+    <system:String x:Key="StrSettingsPinMode">Display Mode: </system:String>
+    <system:String x:Key="StrSearchInstallEverything">💡 Install Everything for full-disk search</system:String>
+    <system:String x:Key="StrSearchResults">Full-Disk Results</system:String>
+</ResourceDictionary>

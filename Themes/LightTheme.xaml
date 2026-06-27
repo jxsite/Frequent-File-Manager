@@ -1,0 +1,19 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!-- Color Palette - Light -->
+    <SolidColorBrush x:Key="BgDarkBrush" Color="#EEF4F5FC"/>
+    <SolidColorBrush x:Key="BgCardBrush" Color="#FFFFFF"/>
+    <SolidColorBrush x:Key="BgCardHoverBrush" Color="#E6E8F3"/>
+    <SolidColorBrush x:Key="AccentBrush" Color="#7C4DFF"/>
+    <SolidColorBrush x:Key="TextPrimaryBrush" Color="#1E1E2E"/>
+    <SolidColorBrush x:Key="TextSecondaryBrush" Color="#585B70"/>
+    <SolidColorBrush x:Key="BorderBrush" Color="#DCDCE8"/>
+    <SolidColorBrush x:Key="AccentAlphaBrush" Color="#307C4DFF"/>
+
+    <!-- Status colors -->
+    <SolidColorBrush x:Key="TextMutedBrush" Color="#8C8FA1"/>
+    <SolidColorBrush x:Key="YellowBrush" Color="#DF8E1D"/>
+    <SolidColorBrush x:Key="GreenBrush" Color="#40A02B"/>
+    <SolidColorBrush x:Key="RedBrush" Color="#D20F39"/>
+    <SolidColorBrush x:Key="TextSelectedBrush" Color="#FFFFFF"/>
+</ResourceDictionary>
