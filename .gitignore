@@ -1,0 +1,21 @@
+# Build outputs
+bin/
+obj/
+publish/
+
+# Single-file publish exe (managed via GitHub Release)
+SidebarApp.exe
+
+# Native runtime dlls copied by publish
+*.dll
+*.pdb
+
+# VS/Rider
+.vs/
+*.user
+*.suo
+.idea/
+
+# OS
+Thumbs.db
+.DS_Store
